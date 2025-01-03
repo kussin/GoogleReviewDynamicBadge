@@ -1,0 +1,27 @@
+<?php
+// GOOGLE BUSINESS
+define('YOUR_PLACE_ID', 'ChIJ3RslX-O6Y0ERgYGHKYI1W58');
+
+// GOOGLE API
+define('API_URL', 'https://maps.googleapis.com/maps/api/place/details/json');
+define('API_KEY', '<key>');
+
+define('GOOGLE_URL', API_URL . '?placeid=' . YOUR_PLACE_ID . '&sensor=true&key=' . API_KEY);
+
+// SECURITY REDIRECT
+define('REDIRECT_URL', 'https://www.kussin.de/');
+
+// LANGUAGE
+define('DEFAULT_LANG', 'en');
+
+// DEAFULTS
+define('BASE_PATH', __DIR__ . '/');
+
+// DEAFULTS
+define('FALLBACK_STARS', 4.25);
+define('FALLBACK_REVIEWS', 213);
+
+// ERROR
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
