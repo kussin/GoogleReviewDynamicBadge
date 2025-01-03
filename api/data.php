@@ -23,6 +23,7 @@ function get_google_reviews()
         // FALLBACK
         $aResponse = [
             'result' => [
+                'name' => 'Google Maps API Request Failed',
                 'rating' => FALLBACK_STARS,
                 'user_ratings_total' => FALLBACK_REVIEWS,
             ]
