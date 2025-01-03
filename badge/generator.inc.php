@@ -1,0 +1,1 @@
+<!-- Generator: KUSSIN | Google Reviews: Dynamic Badge, <?php echo date('Y-m-d'); ?>-<?php echo time(); ?> for `<?php echo $aData['result']['name']; ?>` -->

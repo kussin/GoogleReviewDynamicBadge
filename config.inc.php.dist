@@ -17,6 +17,10 @@ define('DEFAULT_LANG', 'en');
 // DEAFULTS
 define('BASE_PATH', __DIR__ . '/');
 
+// CACHE
+define('CACHE_PATH', BASE_PATH . 'cache/');
+define('CACHE_TIME', 60 * 60);
+
 // DEAFULTS
 define('FALLBACK_STARS', 4.25);
 define('FALLBACK_REVIEWS', 213);

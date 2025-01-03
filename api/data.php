@@ -4,7 +4,7 @@
  * Get google reviews
  * @return array Google reviews data
  */
-function get_google_reviews()
+function get_google_reviews() : array
 {
     // Fetch reviews with cURL
     $cHandle = curl_init();
@@ -37,6 +37,9 @@ function get_google_reviews()
 
     // FORMAT RATING
     $aResponse['result']['rating'] = number_format(round($aResponse['result']['rating'], 1), 1);
+
+    // ADD LANGUAGE CODE
+    $aResponse['language_code'] = !empty($_GET['lang']) ? trim($_GET['lang']) : DEFAULT_LANG;
 
     return $aResponse;
 }
