@@ -1,7 +1,7 @@
 <?php
 
 $aTranslations = array(
-    'DE' => 'Englisch',
+    'EN' => 'English',
 
     'STARS' => '%s Stars',
     'REVIEWS' => '%s Reviews',
