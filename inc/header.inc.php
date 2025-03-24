@@ -11,4 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
-header('Content-Type: image/svg+xml');
+$sFormat = !empty($_GET['format']) ? trim($_GET['format']) : 'badge';
+
+switch ($sFormat) {
+    case 'mini':
+//        header('Content-Type: image/svg+xml');
+        break;
+
+    case 'badge':
+    default:
+        header('Content-Type: image/svg+xml');
+        break;
+}

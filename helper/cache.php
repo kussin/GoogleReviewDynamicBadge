@@ -81,5 +81,120 @@ function get_badge($aData) : string
  */
 function get_summary($aData) : string
 {
-    return 'Google reviews summary (Format: mini) will follow in 03/2025.';
+    // CHECK CACHE
+    $sLatestCacheFile = null;
+    $iLatestCacheTime = 0;
+
+    foreach (glob(CACHE_PATH . $aData['language_code'] . '-mini-*.cache') as $sFile) {
+        $iFileTime = filemtime($sFile);
+        if ($iFileTime > $iLatestCacheTime && (time() - $iFileTime) < CACHE_TIME) {
+            $sLatestCacheFile = $sFile;
+            $iLatestCacheTime = $iFileTime;
+        }
+    }
+
+    // LOAD CACHE
+    if ($sLatestCacheFile) {
+        return file_get_contents($sLatestCacheFile);
+    }
+
+    // SET VALUES
+    $sRating = $aData['result']['rating'] . '/5';
+    $iReviewCount = (int) $aData['result']['user_ratings_total'] + REVIEW_OFFSET;
+
+    $dStars = (double) $aData['result']['rating'];
+
+    switch (true) {
+//    case $dStars > 4.5 :
+//        $sStars = '5-stars';
+//        break;
+
+        case $dStars <= 1 :
+            $sBadgeUrl = CDN_URL .'images/stars/1-star.svg';
+            $sRatingGrade = translate('BAD');
+            break;
+
+        case $dStars <= 1.5 :
+            $sBadgeUrl = CDN_URL .'images/stars/1-5-stars.svg';
+            $sRatingGrade = translate('POOR');
+            break;
+
+        case $dStars <= 2 :
+            $sBadgeUrl = CDN_URL .'images/stars/2-stars.svg';
+            $sRatingGrade = translate('ALRIGHT');
+            break;
+
+        case $dStars <= 2.5 :
+            $sBadgeUrl = CDN_URL .'images/stars/2-5-stars.svg';
+            $sRatingGrade = translate('OK');
+            break;
+
+        case $dStars <= 3 :
+            $sBadgeUrl = CDN_URL .'images/stars/3-stars.svg';
+            $sRatingGrade = translate('AVERAGE');
+            break;
+
+        case $dStars <= 3.5 :
+            $sBadgeUrl = CDN_URL .'images/stars/4-stars.svg';
+            $sRatingGrade = translate('GOOD');
+            break;
+
+        case $dStars <= 4 :
+            $sBadgeUrl = CDN_URL .'images/stars/4-stars.svg';
+            $sRatingGrade = translate('GREAT');
+            break;
+
+        case $dStars <= 4.5 :
+            $sBadgeUrl = CDN_URL .'images/stars/4-5-stars.svg';
+            $sRatingGrade = translate('EXCELLENT');
+            break;
+
+        default :
+            $sBadgeUrl = CDN_URL .'images/stars/5-stars.svg';
+            $sRatingGrade = translate('EXCELLENT');
+            break;
+    }
+
+    // UPDATE CACHE
+    ob_start();
+
+    // MARKUP
+    $aHtml = [];
+
+    $aHtml[] = '<p id="kussin-google-review-dynamic-summary-wrapper">';
+        $aHtml[] = '<span class="kussin-google-review-dynamic-rating">' . $sRating . '</span>';
+        $aHtml[] = '<img
+            alt=""
+            src="' . $sBadgeUrl . '"
+            fetchpriority="low"
+            decoding="async"
+            loading="lazy"
+            width="' . MINI_STARS_WIDTH . '"
+            height="' . MINI_STARS_HEIGHT . '"
+            sizes="75vw"
+            data-action="url"
+            data-href="#kussin-google-review-dynamic-summary-badge"
+            data-target="_self"
+            data-pf-type="Image4"
+            store="[object Object]"
+            class="kussin-google-review-dynamic-stars">';
+        $aHtml[] = '<span class="kussin-google-review-dynamic-grade">&quot;' . $sRatingGrade . '&quot;</span>';
+        $aHtml[] = '<span class="kussin-google-review-dynamic-count" title="' . translate('SUMMARIZED_REVIEWS') . '">' . translate('REVIEWS', [$iReviewCount]) . '</span>';
+    $aHtml[] = '</p>';
+
+    echo implode(PHP_EOL, $aHtml);
+
+    // BUFFER OUTPUT
+    $sHtml = ob_get_clean();
+
+    // CREATE CACHE DIRECTORY
+    if (!file_exists(CACHE_PATH)) {
+        mkdir(CACHE_PATH, 0777, true); // Ensure the cache directory exists
+    }
+
+    // CREATE CACHE FILE
+//    file_put_contents(CACHE_PATH . $aData['language_code'] . '-mini-' . time() . '.cache', $sHtml);
+
+    // RETURN BADGE
+    return $sHtml;
 }

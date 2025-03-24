@@ -8,6 +8,9 @@ define('API_KEY', '<key>');
 
 define('GOOGLE_URL', API_URL . '?placeid=' . YOUR_PLACE_ID . '&sensor=true&key=' . API_KEY);
 
+// CDN
+define('CDN_URL', 'https://dynamic-badge.google-reviews.fuxstar.de/');
+
 // SECURITY REDIRECT
 define('REDIRECT_URL', 'https://www.kussin.de/');
 
@@ -24,6 +27,12 @@ define('CACHE_TIME', 60 * 60);
 // DEAFULTS
 define('FALLBACK_STARS', 4.25);
 define('FALLBACK_REVIEWS', 213);
+
+define('MINI_STARS_WIDTH', 123);
+define('MINI_STARS_HEIGHT', 17);
+
+// OFFSET
+define('REVIEW_OFFSET', 0); // E.g. for Marketplace reviews
 
 // ERROR
 ini_set('display_errors', 1);
