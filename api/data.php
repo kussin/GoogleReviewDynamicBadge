@@ -41,6 +41,9 @@ function get_google_reviews() : array
     // ADD LANGUAGE CODE
     $aResponse['language_code'] = !empty($_GET['lang']) ? trim($_GET['lang']) : DEFAULT_LANG;
 
+    // ADD BADGE FORMAT
+    $aResponse['format'] = !empty($_GET['format']) ? trim($_GET['format']) : 'badge';
+
     return $aResponse;
 }
 
