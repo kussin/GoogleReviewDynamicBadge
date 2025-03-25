@@ -162,7 +162,7 @@ function get_summary($aData) : string
     $aHtml = [];
 
     $aHtml[] = '<p id="kussin-google-review-dynamic-summary-wrapper">';
-        $aHtml[] = '<span class="kussin-google-review-dynamic-rating">' . $sRating . '</span>';
+        $aHtml[] = '<span class="kussin-google-review-dynamic-rating"><strong>' . $sRating . '</strong></span>';
         $aHtml[] = '<img
             alt=""
             src="' . $sBadgeUrl . '"
@@ -179,6 +179,7 @@ function get_summary($aData) : string
             store="[object Object]"
             class="kussin-google-review-dynamic-stars">';
         $aHtml[] = '<span class="kussin-google-review-dynamic-grade">&quot;' . $sRatingGrade . '&quot;</span>';
+        $aHtml[] = '&nbsp;|&nbsp;';
         $aHtml[] = '<span class="kussin-google-review-dynamic-count" title="' . translate('SUMMARIZED_REVIEWS') . '">' . translate('REVIEWS', [$iReviewCount]) . '</span>';
     $aHtml[] = '</p>';
 
@@ -193,7 +194,7 @@ function get_summary($aData) : string
     }
 
     // CREATE CACHE FILE
-//    file_put_contents(CACHE_PATH . $aData['language_code'] . '-mini-' . time() . '.cache', $sHtml);
+    file_put_contents(CACHE_PATH . $aData['language_code'] . '-mini-' . time() . '.cache', $sHtml);
 
     // RETURN BADGE
     return $sHtml;
