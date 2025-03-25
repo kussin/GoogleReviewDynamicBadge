@@ -23,7 +23,7 @@
     }
 
     .st5, .st6 {
-        fill: #e7711b;
+        fill: rgb(251, 176, 0);
     }
 
     .st7 {
@@ -40,7 +40,7 @@
 
     .st9 {
         fill: none;
-        stroke: #e7711b;
+        stroke: rgb(251, 176, 0);
         stroke-miterlimit: 10;
     }
 
