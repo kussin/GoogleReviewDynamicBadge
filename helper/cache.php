@@ -179,7 +179,7 @@ function get_summary($aData) : string
             store="[object Object]"
             class="kussin-google-review-dynamic-stars">';
         $aHtml[] = '<span class="kussin-google-review-dynamic-grade">&quot;' . $sRatingGrade . '&quot;</span>';
-        $aHtml[] = '&nbsp;|&nbsp;';
+        $aHtml[] = '<span class="kussin-google-review-dynamic-divider">|</span>';
         $aHtml[] = '<span class="kussin-google-review-dynamic-count" title="' . translate('SUMMARIZED_REVIEWS') . '">' . translate('REVIEWS', [$iReviewCount]) . '</span>';
     $aHtml[] = '</p>';
 
