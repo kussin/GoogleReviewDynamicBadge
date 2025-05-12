@@ -110,47 +110,47 @@ function get_summary($aData) : string
 //        break;
 
         case $dStars <= 1 :
-            $sBadgeUrl = CDN_URL .'images/stars/1-star.svg';
+            $sBadgeUrl = CDN_URL .'stars/1-star.svg';
             $sRatingGrade = translate('BAD');
             break;
 
         case $dStars <= 1.5 :
-            $sBadgeUrl = CDN_URL .'images/stars/1-5-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/1-5-stars.svg';
             $sRatingGrade = translate('POOR');
             break;
 
         case $dStars <= 2 :
-            $sBadgeUrl = CDN_URL .'images/stars/2-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/2-stars.svg';
             $sRatingGrade = translate('ALRIGHT');
             break;
 
         case $dStars <= 2.5 :
-            $sBadgeUrl = CDN_URL .'images/stars/2-5-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/2-5-stars.svg';
             $sRatingGrade = translate('OK');
             break;
 
         case $dStars <= 3 :
-            $sBadgeUrl = CDN_URL .'images/stars/3-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/3-stars.svg';
             $sRatingGrade = translate('AVERAGE');
             break;
 
         case $dStars <= 3.5 :
-            $sBadgeUrl = CDN_URL .'images/stars/4-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/4-stars.svg';
             $sRatingGrade = translate('GOOD');
             break;
 
         case $dStars <= 4 :
-            $sBadgeUrl = CDN_URL .'images/stars/4-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/4-stars.svg';
             $sRatingGrade = translate('GREAT');
             break;
 
         case $dStars <= 4.5 :
-            $sBadgeUrl = CDN_URL .'images/stars/4-5-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/4-5-stars.svg';
             $sRatingGrade = translate('EXCELLENT');
             break;
 
         default :
-            $sBadgeUrl = CDN_URL .'images/stars/5-stars.svg';
+            $sBadgeUrl = CDN_URL .'stars/5-stars.svg';
             $sRatingGrade = translate('EXCELLENT');
             break;
     }
